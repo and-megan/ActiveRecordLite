@@ -6,6 +6,7 @@ module Associatable
   def has_many_through(name, through, source)
     define_method(name) do
       associations = self.send(through)
+
       unless associations.kind_of?(Array)
         associations.to_a
       end

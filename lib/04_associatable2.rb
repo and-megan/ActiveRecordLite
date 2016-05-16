@@ -5,14 +5,14 @@ module Associatable
 
   def has_many_through(name, through, source)
     define_method(name) do
-      association = self.send(through)
-      unless association.kind_of?(Array)
-        association.to_a
+      associations = self.send(through)
+      unless associations.kind_of?(Array)
+        associations.to_a
       end
 
       has_many_through = []
 
-      association.each do |object|
+      associations.each do |object|
         has_many_through =
             has_many_through.concat(object.send(source))
       end

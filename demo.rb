@@ -5,7 +5,7 @@ ENV['DEBUG'] = 'true'
 DBConnection.open('db/bikes.sqlite3')
 
 class Bike < SQLObject
-  my_attr_accessor :id, :name, :owner_id
+  my_attr_accessor :id, :color, :owner_id
 
   belongs_to :human, foreign_key: :owner_id
   has_one_through :lock, :human, :house
@@ -34,7 +34,7 @@ puts 'simply find queries:'
 puts '-------------------'
 bike = Bike.find(2)
 puts "bike = Bike.find(2)       => #{bike.inspect}"
-puts "bike.name                => #{bike.name}"
+puts "bike.name                => #{bike.color}"
 
 puts
 
